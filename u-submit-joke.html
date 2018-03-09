@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Web Survey Tool Internal</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/fonts/simple-line-icons.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700">
+    <link rel="stylesheet" href="assets/css/ContactForm.css">
+    <link rel="stylesheet" href="assets/css/Footer.css">
+    <link rel="stylesheet" href="assets/css/LoginForm.css">
+    <link rel="stylesheet" href="assets/css/Modal.css">
+    <link rel="stylesheet" href="assets/css/RegisterForm.css">
+    <link rel="stylesheet" href="assets/css/Sidebar-Menu1.css">
+    <link rel="stylesheet" href="assets/css/starratings.css">
+    <link rel="stylesheet" href="assets/css/styles-1.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body>
+    <div id="wrapper">
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li><i class="icon-emotsmile d-flex justify-content-center center-items" style="font-size:50px;padding-top:50px;padding-bottom:50px;"></i></li>
+                <li> <a href="u-dashboard.html" class="center-items">Dashboard </a></li>
+                <li> <a href="u-my-jokes.html" class="center-items">My Jokes</a></li>
+                <li> <a href="u-my-rated-jokes.html" class="center-items">Rated Jokes</a></li>
+                <li> <a href="u-contact-us.html" class="center-items">Contact Us</a></li>
+                <li> </li>
+                <li> </li>
+            </ul>
+        </div>
+        <div class="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col"><a class="btn btn-link" role="button" href="#menu-toggle" id="menu-toggle"><i class="fa fa-bars" style="color:rgb(22,23,24);"></i></a></div>
+                    <div class="col-md-12">
+                        <div>
+                            <h1>Submit A Joke</h1>
+                        </div>
+                    </div>
+                    <div class="col flex-wrap" style="padding-top:20px;">
+                        <h6><strong>Instructions:</strong></h6>
+                        <p style="height:122px;margin-bottom:10px;width:850px;">Lorem Ipsum&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make
+                            a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release.<br><br><br></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="page-content-wrapper">
+            <form style="margin-top:20px;">
+                <div class="form-group" style="margin-top:20px;width:700px;"><textarea class="form-control" placeholder="Write Joke here" style="height:150px;width:850px;border:2px solid black;margin-right:0px;margin-left:10px;margin-top:10px;"></textarea>
+                    <div style="width:700px;padding-left:10px;">
+                        <div class="container" style="padding:0px;width:700px;margin:0px;">
+                            <div class="form-row" style="margin-right:0px;margin-left:0px;margin-top:10px;width:850px;">
+                                <div class="col align-self-center">
+                                    <div class="form-check" style="width:700px;padding-left:30px;"><input class="form-check-input" type="checkbox" id="formCheck-1"><label class="form-check-label" for="formCheck-1">+18</label></div>
+                                </div>
+                            </div>
+                            <div class="form-row" style="margin-right:0px;margin-left:0px;margin-top:10px;width:700px;">
+                                <div class="col">
+                                    <div class="dropdown"><button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button" style="width:140px;">Joke Type</button>
+                                        <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="#">First Item</a><a class="dropdown-item" role="presentation" href="#">Second Item</a><a class="dropdown-item" role="presentation" href="#">Third Item</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row" id="dvContainer" style="margin-right:0px;margin-left:0px;margin-top:10px;width:700px;">
+                                <div class="col" style="width:150px;">
+                                    <div class="dropdown"><button class="btn btn-primary dropdown-toggle float-left" data-toggle="dropdown" aria-expanded="false" type="button" style="width:140px;">Joke Genre</button>
+                                        <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="#">First Item</a><a class="dropdown-item" role="presentation" href="#">Second Item</a><a class="dropdown-item" role="presentation" href="#">Third Item</a></div>
+                                    </div>
+                                </div>
+                                <div class="col" style="width:150px;"><button class="btn" onclick="AddGenre();"><i class="fa fa-plus"></i></button></div>
+                                <div class="col" style="width:150px;"></div>
+                                <div class="col" style="width:150px;"></div>
+                                <div class="col" style="width:150px;"></div>
+                            </div>
+                            <div></div>
+                            <div class="form-row" style="margin-right:0px;margin-left:0px;margin-top:10px;width:850px;">
+                                <div class="col align-self-center" style="width:700px;"><button class="btn btn-primary d-flex justify-content-center" type="button" style="width:140px;" data-toggle="modal" href="#accepted">Submit</button></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="modal fade" role="dialog" tabindex="-1" id="accepted">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Submission Accepted</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+                <div class="modal-body" style="padding-right:50px;padding-left:50px;">
+                    <form><button class="btn btn-secondary float-left" type="button" data-dismiss="modal">Close</button><button class="btn btn-primary float-right" type="button">Submit Another</button></form>
+                </div>
+                <div class="modal-footer"></div>
+            </div>
+        </div>
+    </div>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/add-genre.js"></script>
+    <script src="assets/js/Contact-FormModal-Contact-Form-with-Google-Map.js"></script>
+    <script src="assets/js/mdb.js"></script>
+    <script src="assets/js/Sidebar-Menu.js"></script>
+</body>
+
+</html>

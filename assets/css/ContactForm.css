@@ -1,0 +1,10 @@
+.static-map {
+  margin-bottom:20px;
+}
+
+@media (min-width: 300px) {
+  #m-dd {
+    width:265px;
+  }
+}
+
