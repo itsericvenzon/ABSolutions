@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Web Survey Tool</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/footer.css">
+    <link rel="stylesheet" href="assets/css/loginform.css">
+    <link rel="stylesheet" href="assets/css/popover.css">
+    <link rel="stylesheet" href="assets/css/previewratings.css">
+    <link rel="stylesheet" href="assets/css/registrationform.css">
+    <link rel="stylesheet" href="assets/css/sidebar-menu.css">
+    <link rel="stylesheet" href="assets/css/sidebar.css">
+    <link rel="stylesheet" href="assets/css/starratings.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body>
+    <div id="wrapper">
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand"> <a href="#"><i class="fa fa-flask"></i>LMFAO</a></li>
+                <li class="sidebar-user"> <button type="button" class="btn btn-dark" data-trigger="focus" data-toggle="a-popover">Administrator
+</button></li>
+                <li> <a href="a-dashboard.html"><i class="fa fa-dashboard"></i>&nbsp Dashboard</a></li>
+                <li> <a href="a-inquiries.html"><i class="fa fa-comments"></i>&nbsp Inquiries</a></li>
+                <li> <a href="a-backup.html"><i class="fa fa-database"></i>&nbsp Backup</a></li>
+            </ul>
+        </div>
+        <div class="page-content-wrapper">
+            <div class="container-fluid content-area"><a class="btn btn-link" role="button" href="#menu-toggle" id="menu-toggle"><i class="fa fa-bars"></i></a>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div>
+                            <h1>Generate Statistics</h1>
+                            <hr>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col content-left">
+                        <h5 class="form-check">Start Date:</h5>
+                    </div>
+                    <div class="col"><input type="date"/></div>
+                    <div class="col content-left">
+                        <h5 class="form-check">End Date:</h5>
+                    </div>
+                    <div class="col"><input type="date"></div>
+                </div>
+                <div class="row preview-row">
+                    <div class="col content-left">
+                        <h5 class="form-check">Database:</h5>
+                    </div>
+                    <div class="col">
+                        <div class="dropdown"><button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button">Dropdown </button>
+                            <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="#">First Item</a><a class="dropdown-item" role="presentation" href="#">Second Item</a><a class="dropdown-item" role="presentation" href="#">Third Item</a></div>
+                        </div>
+                    </div>
+                    <div class="col content-left">
+                        <h5 class="form-check">Table:</h5>
+                    </div>
+                    <div class="col">
+                        <div class="dropdown"><button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button">Dropdown </button>
+                            <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="#">First Item</a><a class="dropdown-item" role="presentation" href="#">Second Item</a><a class="dropdown-item" role="presentation" href="#">Third Item</a></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row preview-row">
+                    <div class="col">
+                        <h5 class="form-check" style="float:left; margin-right:10px;">Report Title:</h5><input class="d-flex align-items-center report-title-size" type="text" name="report-title" required="" autofocus=""></div>
+                </div>
+                <div class="row preview-row">
+                    <div class="col inner-stats content-left">
+                        <h6>Demographics</h6>
+                        <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-1"><label class="form-check-label" for="formCheck-1">Age</label></div>
+                        <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-1"><label class="form-check-label" for="formCheck-1">Gender</label></div>
+                        <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-1"><label class="form-check-label" for="formCheck-1">Education</label></div>
+                        <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-1"><label class="form-check-label" for="formCheck-1">Country</label></div>
+                    </div>
+                    <div class="col inner-stats content-left">
+                        <h6>Joke</h6>
+                        <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-1"><label class="form-check-label" for="formCheck-1">Genre</label></div>
+                        <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-1"><label class="form-check-label" for="formCheck-1">Type</label></div>
+                        <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-1"><label class="form-check-label" for="formCheck-1">Reported</label></div>
+                        <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-1"><label class="form-check-label" for="formCheck-1">Date</label></div>
+                    </div>
+                    <div class="col inner-stats">
+                        <h6>Rating</h6>
+                        <div class="form-group d-flex align-items-center" style="margin-bottom:0px;"><input type="checkbox" style="float:left"><div style="margin:0px 0px 5px 5px">
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span>
+</div></div>
+                        <div class="form-group d-flex align-items-center" style="margin-bottom:0px;"><input type="checkbox" style="float:left"><div style="margin:0px 0px 5px 5px">
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span>
+</div></div>
+                        <div class="form-group d-flex align-items-center" style="margin-bottom:0px;"><input type="checkbox" style="float:left"><div style="margin:0px 0px 5px 5px">
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+    <span class="fa fa-star checked"></span>
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span>
+</div></div>
+                        <div class="form-group d-flex align-items-center" style="margin-bottom:0px;"><input type="checkbox" style="float:left"><div style="margin:0px 0px 5px 5px">
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star checked"></span>
+<span class="fa fa-star"></span>
+</div></div>
+                        <div class="form-group d-flex align-items-center" style="margin-bottom:0px;"><input type="checkbox" style="float:left"><div style="margin:0px 0px 5px 5px">
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star checked"></span>
+    
+</div></div>
+                    </div>
+                </div>
+                <div class="row preview-row">
+                    <div class="col align-self-center"><button class="btn btn-primary btn-lg float-left" type="button">Generate</button></div>
+                </div>
+                <hr>
+            </div>
+        </div>
+    </div>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/a-popover.js"></script>
+    <script src="assets/js/add-rem-elements.js"></script>
+    <script src="assets/js/sidebar-menu.js"></script>
+    <script src="assets/js/u-popover.js"></script>
+</body>
+
+</html>
