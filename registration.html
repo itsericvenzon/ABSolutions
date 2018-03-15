@@ -45,10 +45,10 @@
                     <div class='form-group'><label>Age</label>
                         <div class='dropdown'><button class='btn btn-primary dropdown-toggle' data-toggle='dropdown' aria-expanded='false' type='button' style='margin-top:0px;'>Dropdown </button>
                             <div class='dropdown-menu' role='menu'>
-
-                                <a class='dropdown-item' role='presentation' href='#'>First Item</a>
-                                <a class='dropdown-item' role='presentation' href='#'>Second Item</a>
-                                <a class='dropdown-item' role='presentation' href='#'>Third Item</a>
+                                <?php
+                                    include ('getAgeGroups.php');
+                                ?>
+                                <!--<a class='dropdown-item' role='presentation' href='#'>First Item</a>-->
                             </div>
                         </div>
                     </div>
@@ -60,9 +60,7 @@
                                 <?php
                                     include ('getCountries.php');
                                 ?>
-                                <a class='dropdown-item' role='presentation' href='#'>First Item</a>
-                                <a class='dropdown-item' role='presentation' href='#'>Second Item</a>
-                                <a class='dropdown-item' role='presentation' href='#'>Third Item</a>
+                                <!--<a class='dropdown-item' role='presentation' href='#'>First Item</a>-->
                             </div>
                         </div>
                     </div>
@@ -71,9 +69,10 @@
             <div class='form-group' style='margin-bottom:5px;'><label>Education Level</label>
                 <div class='dropdown'><button class='btn btn-primary dropdown-toggle btn-long' data-toggle='dropdown' aria-expanded='false' type='button' style='margin-top:0px;'>Dropdown </button>
                     <div class='dropdown-menu' role='menu'>
-                        <a class='dropdown-item' role='presentation' href='#'>First Item</a>
-                        <a class='dropdown-item' role='presentation' href='#'>Second Item</a>
-                        <a class='dropdown-item' role='presentation' href='#'>Third Item</a>
+                        <?php
+                            include ('getEducation.php');
+                        ?>
+                        <!--<a class='dropdown-item' role='presentation' href='#'>First Item</a>-->
                     </div>
                 </div>
             </div>

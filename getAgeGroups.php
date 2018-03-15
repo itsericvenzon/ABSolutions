@@ -2,7 +2,7 @@
     include ('h-dbconnection.php');
 
     // fields id, filename, mimetype, description, data
-    $sql = "select * FROM country";
+    $sql = "select * FROM age";
     $result = $conn->query($sql);
 
     if ($conn->error) {
@@ -12,8 +12,9 @@
     }
 
     while( $row = mysqli_fetch_array($result) ){
-        $country = $row['country'];
-        $cID = $row['countryID'];
-        echo "<a class='dropdown-item' role='presentation' href='" . $cID . "'>" .  $country . "</a>";
+        $age = $row['ageRange'];
+        $aID = $row['ageID'];
+        echo "<a class='dropdown-item' role='presentation' href='" . $aID . "'>" .  $age . "</a>";
     }
+
 ?>
