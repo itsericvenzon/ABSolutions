@@ -16,6 +16,28 @@
     <link rel="stylesheet" href="assets/css/sidebar.css">
     <link rel="stylesheet" href="assets/css/starratings.css">
     <link rel="stylesheet" href="assets/css/styles.css">
+
+    <script src='http://code.jquery.com/jquery-1.9.1.js'></script>
+    <script>
+        function chk(){
+            var username=document.getElementById('username').value;
+            var pwd=document.getElementById('pwd').value;
+
+            $.ajax({
+                type:'post',
+                url:'registration.php',
+                data: {
+                    un:username,
+                    pwd:pwd,
+                },
+                cache:false,
+                success: function(error){
+                    $('#msg').html(error);
+                }
+            })
+            return false;
+        }
+    </script>
 </head>
 
 <body>
@@ -25,9 +47,12 @@
             <div class="illustration"><i class="fa fa-flask"></i>
                 <h1>LMFAO</h1>
             </div>
-            <div class="form-group"><input class="form-control" type="email" name="email" placeholder="Username"></div>
-            <div class="form-group"><input class="form-control" type="password" name="password" placeholder="Password"></div>
-            <div class="form-group"><button class="btn btn-primary btn-block" type="submit">Log In</button></div><a href="#fusername" class="forgot" data-toggle="modal">Forgot Username</a><a href="#fpasswd" class="forgot" data-toggle="modal">Forgot Password</a><a href="Registration.html"
+            <div class="form-group"><input class="form-control" type="email" name="email" placeholder="Username" id="username"></div>
+            <div class="form-group"><input class="form-control" type="password" name="password" placeholder="Password" id="password"></div>
+            <div class="form-group"><button class="btn btn-primary btn-block" type="submit" id="log">Log In</button></div>
+            <a href="#fusername" class="forgot" data-toggle="modal">Forgot Username</a>
+            <a href="#fpasswd" class="forgot" data-toggle="modal">Forgot Password</a>
+            <a href="Registration.html"
                 class="forgot">Register</a></form>
     </div>
     <div class="modal fade" role="dialog" tabindex="-1">

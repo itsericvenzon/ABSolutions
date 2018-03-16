@@ -1,16 +1,17 @@
 
 <?php
-$conn = new mysqli('localhost','root','Password1','humour');
+include ('h-dbconnection.php');
 
-$un = $_REQUEST['username'];
-$em = $_REQUEST['email'];
-$pw = md5($_REQUEST['password']);
-$cpw = md5($_REQUEST['confirmpassword']);
+$un = trim($_POST['username']);
+$em = trim($_POST['email']);
+$pwd = $_POST['pwd'];
+$cpwd = $_POST['cpwd'];
 
-$age = $_REQUEST['age'];
-$country = $_REQUEST['country'];
-$edu = $_REQUEST['education'];
-$gender = $_REQUEST['gender'];
+$age = $_POST['age'];
+$country = $_POST['country'];
+$edu = $_POST['education'];
+$gender = $_POST['gender'];
+$discl = $_POST['discl'];
 
 $sql = "SELECT username FROM participant WHERE username = '$un'";
 $result = $conn->query($sql);
@@ -21,7 +22,7 @@ if ($conn->error) {
     die();
 }
 
-$sql2 = "SELECT email FROM user WHERE email = '$email'";
+$sql2 = "SELECT email FROM participant WHERE email = '$email'";
 $result2 = $conn->query($sql2);
 $count2 = mysqli_num_rows($result2);
 if ($conn->error) {
@@ -32,33 +33,31 @@ if ($conn->error) {
 
 
 if($un == "" || $em == "" || $pw == ""|| $cpw == "" ||
-    $age == '0' || $country == '0' || $edu == '0' || $gender == '0'|| $discl == '0'){
-    $error = "Fill in the missing fields";
-    echo $error;
-}
-if($count > 0) {
-    $error = "Login Name Already Taken.";
-    echo $error;
-    header("refresh:3;url=registration.html");
+    $age == 'Dropdown' || $country == 'Dropdown' || $edu == 'Dropdown' || $gender == ''|| $discl == ''){
+    $msg = "Fill in the missing fields";
+    echo $msg;
 }elseif($count > 0) {
-    $error = "Already existing email.";
-    echo $error;
-    header("refresh:3;url=registration.html");
+    $msg = "Login Name Already Taken.";
+    echo $msg;
+}elseif($count > 0) {
+    $msg = "Already existing email.";
+    echo $msg;
 }elseif($pw != $cpw) {
-    $error = "Passwords do not match.";
-    echo $error;
-    header("refresh:3;url=registration.html");
+    $msg = "Passwords do not match.";
+    echo $msg;
 }else {
-    $sql = "INSERT into participant (username, password, age, country, education, gender) 
-              VALUES ('$un', '$em', '$pw', '$age', '$country', '$edu', '$gender')";
+    $options = ['cost' => 10];
+    $password = password_hash($pwd, PASSWORD_DEFAULT, $options);
+
+    $sql = "INSERT into participant(username, passhash, age, country, education, gender, active) VALUES ('$un', '$em', '$password', '$age', '$country', '$edu', '$gender', 1)";
     $conn->query($sql);
     if ($conn->error) {
         echo "Error: " . $sql . "<br>" . $conn->error. "<br / >";
         $conn->close();
         die();
     }
-    echo "User successfully created. Redirecting you to the login page.";
-    header("refresh:3;url=u-login.html");
+
 }
+
 $conn->close();
 ?>
