@@ -2,6 +2,7 @@ div.stars {
   width:270px;
   display:inline;
   float:left;
+  margin-left:-60px;
 }
 
 input.star {

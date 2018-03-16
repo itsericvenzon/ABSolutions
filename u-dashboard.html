@@ -4,19 +4,17 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Web Survey Tool Internal</title>
+    <title>The Web Survey Tool</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
-    <link rel="stylesheet" href="assets/fonts/simple-line-icons.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700">
-    <link rel="stylesheet" href="assets/css/ContactForm.css">
-    <link rel="stylesheet" href="assets/css/Footer.css">
-    <link rel="stylesheet" href="assets/css/LoginForm.css">
-    <link rel="stylesheet" href="assets/css/Modal.css">
-    <link rel="stylesheet" href="assets/css/RegisterForm.css">
-    <link rel="stylesheet" href="assets/css/Sidebar-Menu1.css">
+    <link rel="stylesheet" href="assets/css/footer.css">
+    <link rel="stylesheet" href="assets/css/loginform.css">
+    <link rel="stylesheet" href="assets/css/popover.css">
+    <link rel="stylesheet" href="assets/css/previewratings.css">
+    <link rel="stylesheet" href="assets/css/registrationform.css">
+    <link rel="stylesheet" href="assets/css/sidebar-menu.css">
+    <link rel="stylesheet" href="assets/css/sidebar.css">
     <link rel="stylesheet" href="assets/css/starratings.css">
-    <link rel="stylesheet" href="assets/css/styles-1.css">
     <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 
@@ -24,46 +22,79 @@
     <div id="wrapper">
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
-                <li><i class="icon-emotsmile d-flex justify-content-center center-items" style="font-size:50px;padding-top:50px;padding-bottom:50px;"></i></li>
-                <li> <a href="#" class="center-items">Dashboard </a></li>
-                <li> <a href="u-my-jokes.html" class="center-items">My Jokes</a></li>
-                <li> <a href="u-my-rated-jokes.html" class="center-items">Rated Jokes</a></li>
-                <li> <a href="u-contact-us.html" class="center-items">Contact Us</a></li>
-                <li> </li>
-                <li> </li>
+                <li class="sidebar-brand"> <a href="#"><i class="fa fa-flask"></i>LMFAO</a></li>
+                <li class="sidebar-user"> <button type="button" class="btn btn-dark" data-trigger="focus" data-toggle="popover">Username</button></li>
+                <li> <a href="u-dashboard"><i class="fa fa-dashboard"></i>&nbsp Dashboard</a></li>
+                <li> <a href="u-my-jokes.html"><i class="fa fa-book"></i>&nbsp My Jokes</a></li>
+                <li> <a href="u-my-rated-jokes.html"><i class="fa fa-star"></i>&nbsp My Rated Jokes</a></li>
+                <li> <a href="u-contact-us.html"><i class="fa fa-envelope"></i>&nbsp Contact Us</a></li>
             </ul>
         </div>
         <div class="page-content-wrapper">
-            <div class="container-fluid">
+            <div class="container-fluid"><a class="btn btn-link" role="button" href="#menu-toggle" id="menu-toggle"><i class="fa fa-bars"></i></a>
                 <div class="row">
-                    <div class="col"><a class="btn btn-link" role="button" href="#menu-toggle" id="menu-toggle"><i class="fa fa-bars" style="color:rgb(22,23,24);"></i></a></div>
                     <div class="col-md-12">
                         <div>
                             <h1>Dashboard</h1>
+                            <hr>
+                        </div>
+                    </div>
+                </div>
+                <div class="row preview-row">
+                    <div class="col col-dash"><a class="btn btn-primary d-flex justify-content-center align-items-center btn-dashboard" role="button" href="u-submit.html">Submit A Joke</a></div>
+                    <div class="col col-dash"><a class="btn btn-primary d-flex justify-content-center align-items-center btn-dashboard" role="button" href="u-rate.html">Rate A Joke</a></div>
+                </div>
+                <div class="row preview-row">
+                    <div class="col">
+                        <h5>My Jokes</h5>
+                        <hr>
+                        <div>
+                            <h6 id="datelabel">&lt;date&gt;&nbsp;</h6>
+                            <h6 id="dateposted">Posted in:&nbsp;</h6>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin accumsan tellus eget ipsum ullamcorper, non condimentum massa ultricies. Nullam dignissim placerat nulla.<br></p>
+                            <hr>
+                        </div>
+                        <div>
+                            <h6 id="datelabel">&lt;date&gt;&nbsp;</h6>
+                            <h6 id="dateposted">Posted in:&nbsp;</h6>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin accumsan tellus eget ipsum ullamcorper, non condimentum massa ultricies. Nullam dignissim placerat nulla.<br></p>
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <h5>My Rated Jokes</h5>
+                        <hr>
+                        <div>
+                            <h6 id="datelabel">&lt;user&gt;</h6>
+                            <h6 id="dateposted">Posted by:&nbsp;</h6>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin accumsan tellus eget ipsum ullamcorper, non condimentum massa ultricies. Nullam dignissim placerat nulla.<br></p><span class="fa fa-star checked"></span>
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span>
+                            <hr>
+                        </div>
+                        <div>
+                            <h6 id="datelabel">&lt;user&gt;</h6>
+                            <h6 id="dateposted">Posted by:&nbsp;</h6>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin accumsan tellus eget ipsum ullamcorper, non condimentum massa ultricies. Nullam dignissim placerat nulla.<br></p><span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+                            <hr>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="page-content-wrapper">
-            <div class="container-fluid" style="margin-top:20px;">
-                <div class="btn-group" role="group"><a class="btn btn-primary d-flex justify-content-center align-items-center" role="button" href="/u-submit-joke.html" style="width:420px;height:150px;margin-right:10px;">Submit A Joke</a><a class="btn btn-primary d-flex justify-content-center align-items-center align-content-center"
-                        role="button" href="/u-rate-jokes.html" style="width:420px;margin-left:9px;">Rate A Joke</a></div>
-            </div>
-        </div>
-        <div class="page-content-wrapper">
-            <div class="container-fluid" style="margin-top:20px;"><div class="col-md-5">
-<canvas id="barChart"></canvas>
-</div>
-    </div>
-        </div>
     </div>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="assets/js/add-genre.js"></script>
-    <script src="assets/js/Contact-FormModal-Contact-Form-with-Google-Map.js"></script>
-    <script src="assets/js/mdb.js"></script>
-    <script src="assets/js/Sidebar-Menu.js"></script>
+    <script src="assets/js/a-popover.js"></script>
+    <script src="assets/js/add-rem-elements.js"></script>
+    <script src="assets/js/sidebar-menu.js"></script>
+    <script src="assets/js/u-popover.js"></script>
 </body>
 
 </html>
