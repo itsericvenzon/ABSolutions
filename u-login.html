@@ -17,18 +17,18 @@
     <link rel="stylesheet" href="assets/css/starratings.css">
     <link rel="stylesheet" href="assets/css/styles.css">
 
-    <script src='http://code.jquery.com/jquery-1.9.1.js'></script>
+<!--    <script src='http://code.jquery.com/jquery-1.9.1.js'></script>
     <script>
         function chk(){
             var username=document.getElementById('username').value;
-            var pwd=document.getElementById('pwd').value;
+            var pwd=document.getElementById('password').value;
 
             $.ajax({
                 type:'post',
-                url:'registration.php',
+                url:'u-login.php',
                 data: {
                     un:username,
-                    pwd:pwd,
+                    pwd:pwd
                 },
                 cache:false,
                 success: function(error){
@@ -37,19 +37,19 @@
             })
             return false;
         }
-    </script>
+    </script>-->
 </head>
 
 <body>
     <div class="login-clean">
-        <form method="post">
+        <form action='u-login.html' method="post" enctype='multipart/form-data'>
             <h2 class="sr-only">Login Form</h2>
             <div class="illustration"><i class="fa fa-flask"></i>
                 <h1>LMFAO</h1>
             </div>
-            <div class="form-group"><input class="form-control" type="email" name="email" placeholder="Username" id="username"></div>
-            <div class="form-group"><input class="form-control" type="password" name="password" placeholder="Password" id="password"></div>
-            <div class="form-group"><button class="btn btn-primary btn-block" type="submit" id="log">Log In</button></div>
+            <div class="form-group"><input class="form-control" type="text" name="username" placeholder="Username" id="username" required></div>
+            <div class="form-group"><input class="form-control" type="password" name="password" placeholder="Password" id="password" required></div>
+            <div class="form-group"><button class="btn btn-primary btn-block" type="submit" id="log" value="login">Log In</button></div>
             <a href="#fusername" class="forgot" data-toggle="modal">Forgot Username</a>
             <a href="#fpasswd" class="forgot" data-toggle="modal">Forgot Password</a>
             <a href="Registration.html"
