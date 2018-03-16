@@ -1,7 +1,6 @@
 <?php
     include ('h-dbconnection.php');
 
-    // fields id, filename, mimetype, description, data
     $sql = "select * FROM education";
     $result = $conn->query($sql);
 
@@ -14,6 +13,7 @@
     while( $row = mysqli_fetch_array($result) ){
         $edu = $row['education'];
         $eID = $row['eduID'];
-        echo "<a class='dropdown-item' role='presentation' href='" . $eID . "'>" .  $edu . "</a>";
+        echo "<a class='dropdown-item' role='presentation' href='#'>" .  $edu . "</a>";
+
     }
 ?>

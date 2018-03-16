@@ -1,7 +1,6 @@
 <?php
     include ('h-dbconnection.php');
 
-    // fields id, filename, mimetype, description, data
     $sql = "select * FROM country";
     $result = $conn->query($sql);
 
@@ -14,6 +13,6 @@
     while( $row = mysqli_fetch_array($result) ){
         $country = $row['country'];
         $cID = $row['countryID'];
-        echo "<a class='dropdown-item' role='presentation' href='" . $cID . "'>" .  $country . "</a>";
+        echo "<a class='dropdown-item' role='presentation' href='#'>" .  $country . "</a>";
     }
 ?>

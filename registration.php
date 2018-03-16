@@ -1,18 +1,37 @@
 
 <?php
-$conn = new mysqli('localhost','root','Password1','humour');
+include ('h-dbconnection.php');
+$servername = "localhost";
+$username = "root";
+$password = "root";
+$dbname = "humour";
 
-$un = $_REQUEST['username'];
-$em = $_REQUEST['email'];
-$pw = md5($_REQUEST['password']);
-$cpw = md5($_REQUEST['confirmpassword']);
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
 
-$age = $_REQUEST['age'];
-$country = $_REQUEST['country'];
-$edu = $_REQUEST['education'];
-$gender = $_REQUEST['gender'];
+$un = trim($_POST['un']);
+$em = trim($_POST['em']);
+$pwd = $_POST['pwd'];
+$cpwd = $_POST['cpwd'];
 
-$sql = "SELECT username FROM participant WHERE username = '$un'";
+$age = $_POST['age'];
+$country = $_POST['country'];
+$edu = $_POST['education'];
+$gender = $_POST['gender'];
+echo "<br><br><br><br><br><br><br><br><br><br><h1>$un . $em . $pwd . $age . $country . $edu . $gender</h1>";
+if ($gender == 'male'){
+    $gender = 'M';
+}if ($gender == 'male'){
+    $gender = 'F';
+}else {
+    $gender = 'O';
+}
+
+/*$sql = "SELECT username FROM participant WHERE username = '$un'";
 $result = $conn->query($sql);
 $count = mysqli_num_rows($result);
 if ($conn->error) {
@@ -21,44 +40,42 @@ if ($conn->error) {
     die();
 }
 
-$sql2 = "SELECT email FROM user WHERE email = '$email'";
+$sql2 = "SELECT email FROM participant WHERE email = '$em'";
 $result2 = $conn->query($sql2);
 $count2 = mysqli_num_rows($result2);
 if ($conn->error) {
     echo "Error: " . $sql . "<br>" . $conn->error. "<br / >";
     $conn->close();
     die();
-}
+}*/
 
-
-if($un == "" || $em == "" || $pw == ""|| $cpw == "" ||
-    $age == '0' || $country == '0' || $edu == '0' || $gender == '0'|| $discl == '0'){
-    $error = "Fill in the missing fields";
-    echo $error;
-}
-if($count > 0) {
-    $error = "Login Name Already Taken.";
-    echo $error;
-    header("refresh:3;url=registration.html");
-}elseif($count > 0) {
-    $error = "Already existing email.";
-    echo $error;
-    header("refresh:3;url=registration.html");
+/*if($count > 0) {
+    $msg = "Login Name Already Taken.";
+    echo $msg;
+    die();
+}elseif($count2 > 0) {
+    $msg = "Already existing email.";
+    echo $msg;
+    die();
 }elseif($pw != $cpw) {
-    $error = "Passwords do not match.";
-    echo $error;
-    header("refresh:3;url=registration.html");
-}else {
-    $sql = "INSERT into participant (username, password, age, country, education, gender) 
-              VALUES ('$un', '$em', '$pw', '$age', '$country', '$edu', '$gender')";
+    $msg = "Passwords do not match.";
+    echo $msg;
+    die();
+}*/
+
+    $options = ['cost' => 10];
+    $password = password_hash($pwd, PASSWORD_DEFAULT, $options);
+
+    echo $password;
+    $sql = "INSERT into participant(username, passhash, email, ageID, countryID, eduID, genderID, active, dateStarted) VALUES ('$un', '$password', '$em', (SELECT countryID FROM country WHERE country = '$country'), (SELECT ageID FROM age WHERE ageRange = '$age'), (SELECT eduID FROM education WHERE education = '$edu'), (SELECT genderID FROM gender WHERE gender = '$gender'), 1, 'now()')";
     $conn->query($sql);
     if ($conn->error) {
         echo "Error: " . $sql . "<br>" . $conn->error. "<br / >";
         $conn->close();
         die();
     }
-    echo "User successfully created. Redirecting you to the login page.";
-    header("refresh:3;url=u-login.html");
-}
+
+
+
 $conn->close();
 ?>
