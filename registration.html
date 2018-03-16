@@ -49,30 +49,25 @@
             <div class="form-group"><label>Email</label><input class="form-control" type="text" name="name"></div>
             <div class="form-group"><label>Password</label><input class="form-control" type="password"></div>
             <div class="form-group"><label>Confirm Password</label><input class="form-control" type="password"></div>
-            <div class="form-group"><label>Age</label><div class="dropdown">
-    <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button" id="agemenu" style="margin-top:0px;"> Select Age Range</a>
-    
-    <ul role="menu" class="dropdown-menu" aria-labelledby="agemenu">
-        <li><a role="presentation" href="#" class="dropdown-item">First Item</a></li>
-            <li><a role="presentation" href="#" class="dropdown-item">Second Item</a></li>
-                <li><a role="presentation" href="#" class="dropdown-item">Third Item</a></li>
-</ul></div>
-            <div class="form-group"><label>Country</label><div class="dropdown">
-    <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button" id="gendermenu" style="margin-top:0px;">Select Country</a>
-    
-    <ul role="menu" class="dropdown-menu" aria-labelledby="gendermenu">
-        <li><a role="presentation" href="#" class="dropdown-item">First Item</a></li>
-            <li><a role="presentation" href="#" class="dropdown-item">Second Item</a></li>
-                <li><a role="presentation" href="#" class="dropdown-item">Third Item</a></li>
-</ul></div>
-            <div class="form-group" style="margin-bottom:5px;"><label>Education Level</label><div class="dropdown">
-    <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button" id="edumenu" style="margin-top:0px;">Select Education Level</a>
-    
-    <ul role="menu" class="dropdown-menu" aria-labelledby="edumenu">
-        <li><a role="presentation" href="#" class="dropdown-item">First Item</a></li>
-            <li><a role="presentation" href="#" class="dropdown-item">Second Item</a></li>
-                <li><a role="presentation" href="#" class="dropdown-item">Third Item</a></li>
-</ul></div>
+            <div class="form-row">
+                <div class="col"><label class="col-form-label">Age</label>
+                    <div class="dropdown"><button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button" id="age" style="margin-top:0px;">Select Age</button>
+                        <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="#">First Item</a><a class="dropdown-item" role="presentation" href="#">Second Item</a><a class="dropdown-item" role="presentation" href="#">Third Item</a></div>
+                    </div>
+                </div>
+                <div class="col"><label class="col-form-label">Country</label>
+                    <div class="dropdown"><button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button" id="age" style="margin-top:0px;">Select Country</button>
+                        <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="#">First Item</a><a class="dropdown-item" role="presentation" href="#">Second Item</a><a class="dropdown-item" role="presentation" href="#">Third Item</a></div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group" style="margin-bottom:0px;margin-top:10px;"><label>Education Level</label>
+                        <div class="dropdown"><button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button" style="margin-top:0px;">Select Education Level</button>
+                            <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="#">First Item</a><a class="dropdown-item" role="presentation" href="#">Second Item</a><a class="dropdown-item" role="presentation" href="#">Third Item</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="form-group"><label>Gender</label>
                 <div class="form-row">
                     <div class="col d-flex justify-content-center">
