@@ -31,6 +31,7 @@
             } else {
                 document.getElementById('match').style.color = 'red';
                 document.getElementById('match').innerHTML = 'Passwords Do No Match';
+                error = "Passwords Mismatch";
             }
         }
     </script>
@@ -76,88 +77,82 @@
     <script>
         $(document).ready(function() {
             //using $.ajax() function
-            $(document).on('submit', '#newuserform', function()
-            {
-                var username=document.getElementById('username').value;
-                var email=document.getElementById('email').value;
-                var pwd=document.getElementById('pwd').value;
-                var cpwd=document.getElementById('cpwd').value;
-                var age=$('#age').text();
-                var country=$('#country').text();
-                var education=$('#edu').text();
-                var gender = $('input[name=gender]:checked').val();
-
-/*                if($.trim($('#username').val()) == ''){
-                    alert('Please enter an username.');
-                    $('#username').focus()
-                    return false;
-                }
-                if($.trim($('#email').val()) == ''){
-                    alert('Please enter an email.');
-                    $('#email').focus()
-                    return false;
-                }
-                if($('#pwd').val() == ''){
-                    alert('Please enter a password.');
-                    $('#pwd').focus()
-                    return false;
-                }
-                if($('#cpwd').val() == ''){
-                    alert('Please confirm your password.');
-                    $('#cpwd').focus()
-                    return false;
-                }*/
-                if(pwd != cpwd){
-                    alert('Passwords do not match.');
-                    return false;
-                }
-
-                if(document.getElementById("age").innerHTML == 'Select Age'){
-                    alert('Please select an age range.');
-                    $('#cpwd').focus()
-                    return false;
-                }
-                if(document.getElementById("country").innerHTML == 'Select Country'){
-                    alert('Please select a country.');
-                    return false;
-                }
-                if(document.getElementById("edu").innerHTML == 'Select Education Level'){
-                    alert('Please select an education option.');
-                    return false;
-                }
-                if(!$("input:radio[name='gender']").is(":checked")){
-                    alert('Please select a gender.');
-                    return false;
-                }
-                if(!$('input[type=checkbox]').prop('checked')){
-                    alert("Please check 'I Agree'.");
-                    return false;
-                }
-
-
-
-                $.ajax({
-                    type:'post',
-                    url:'registration.php',
-                    data: {
-                        un:username,
-                        em:email,
-                        pwd:pwd,
-                        cpwd:cpwd,
-                        age:age,
-                        country:country,
-                        education:education,
-                        gender:gender
-                    },
-                    success: function() {
-                        var message = username + email + pwd + age + education + country + gender;
-                        alert(message);
+                $(document).on('submit', '#newuserform', function () {
+                    var username = document.getElementById('username').value;
+                    var email = document.getElementById('email').value;
+                    var pwd = document.getElementById('pwd').value;
+                    var cpwd = document.getElementById('cpwd').value;
+                    var age = $('#age').text();
+                    var country = $('#country').text();
+                    var education = $('#edu').text();
+                    var gender = $('input[name=gender]:checked').val();
+                    //var message = username + email + pwd + age + education + country + gender;
+                    //alert(message);
+                    if (pwd != cpwd) {
+                        alert('Passwords do not match.');
+                        return false;
                     }
-                })
-                document.getElementById('message').innerHTML = username . email . pwd . cpwd . age . country . gender;
-                return false;
-            });
+
+                    if (age == 'Select Age') {
+                        alert('Please select an age range.');
+                        $('#cpwd').focus();
+                        return false;
+                    }
+                    if (country == 'Select Country') {
+                        alert('Please select a country.');
+                        return false;
+                    }
+                    if (education == 'Select Education Level') {
+                        alert('Please select an education option.');
+                        return false;
+                    }
+                    if (!$("input:radio[name='gender']").is(":checked")) {
+                        alert('Please select a gender.');
+                        return false;
+                    }
+                    if (!$('input[type=checkbox]').prop('checked')) {
+                        alert("Please check 'I Agree'.");
+                        return false;
+                    }
+
+                    if (username.length < 3){
+                        alert("Username is too short.");
+                        return false;
+                    }
+                    if (document.getElementById("em-taken").innerHTML == 'Email in Use') {
+                        alert("Email already in use. Please choose another email.");
+                        return false;
+                    }
+                    if (document.getElementById("id-taken").innerHTML == 'Not Available') {
+                        alert("Username taken. Please choose another username.");
+                        return false;
+                    }
+
+                    $.ajax({
+                        url: 'registration.php',
+                        type: 'post',
+                        data: {
+                            un: username,
+                            em: email,
+                            pwd: pwd,
+                            cpwd: cpwd,
+                            age: age,
+                            country: country,
+                            education: education,
+                            gender: gender
+                        },
+                        success: function() {
+                            alert('Your registration to Research On Funniness Lab is successful!');
+                            window.location = "u-login.html";
+                        },
+                        error: function(message) {
+                            alert(message);
+                        }
+                    });
+                    return false;
+                });
         });
+
     </script>
 
 
@@ -165,7 +160,6 @@
 </head>
 
 <body>
-<div id="message"><br></div>
 <div class="modal fade" role="dialog" tabindex="-1" id="success-reg">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -260,7 +254,7 @@
                     <div class="form-check form-check-inline"><input class="form-check-input" type="radio" id="gender2" name="gender" value="female"><label class="form-check-label float-none" for="gender2">Female</label></div>
                 </div>
                 <div class="col d-flex justify-content-center" id="radiocenter">
-                    <div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="gender" value="other" id="gender3"><label class="form-check-label" for="gender3">Other</label></div>
+                    <div class="form-check form-check-inline"><input class="form-check-input" type="radio" id="gender3" name="gender" value="other"><label class="form-check-label" for="gender3">Other</label></div>
                 </div>
             </div>
         </div>
