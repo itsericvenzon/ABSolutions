@@ -92,10 +92,11 @@
                     var education = $('#edu').text();
                     var gender = $('input[name=gender]:checked').val();
 
-                    if (pwd != cpwd) {
-                        alert('Passwords do not match.');
-                        return false;
-                    }
+					if (pwd != cpwd) {
+						alert('Passwords do not match.');
+						return false;
+					}
+								
 
                     if (age == 'Select Age') {
                         alert('Please select an age range.');
@@ -195,13 +196,13 @@
         <h2 class="text-center" style="margin-bottom:5px;">Register</h2>
         <p class="text-center">Participate in a global research development where all you have to do is say something funny and tell us how funny are the other jokes.<br><br><br></p>
 
-        <div class='form-group'><label>Username</label><input class='form-control' type='text' name='name' onkeyup='checkUN()' id='username' required></div>
-        <div id="id-taken"><br></div>
-        <div class='form-group'><label>Email</label><input class='form-control' type='email' name='name' onkeyup='checkEM()'id='email' required></div>
-        <div id="em-taken"><br></div>
+        <div class='form-group'><label>Username</label><input class='form-control' type='text' name='name' onkeyup='checkUN()' id='username' required>
+        <div id="id-taken"><br></div></div>
+        <div class='form-group'><label>Email</label><input class='form-control' type='email' name='name' onkeyup='checkEM()'id='email' required>
+        <div id="em-taken"><br></div></div>
         <div class='form-group'><label>Password</label><input class='form-control' type='password' onkeyup='check()' id='pwd' required></div>
         <div class='form-group'><label>Confirm Password</label><input class='form-control' type='password' onkeyup='check() 'id='cpwd' required>
-            <span id='match'><br></span>
+            <div id='match'><br></div>
         </div>
 
         <div class="form-row">
