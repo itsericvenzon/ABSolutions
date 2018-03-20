@@ -11,8 +11,6 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bangers">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bowlby+One+SC">
     <link rel="stylesheet" href="assets/css/footer.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-    <link rel="stylesheet" href="assets/css/loader.css">
     <link rel="stylesheet" href="assets/css/loginform.css">
     <link rel="stylesheet" href="assets/css/popover.css">
     <link rel="stylesheet" href="assets/css/previewratings.css">
@@ -21,102 +19,283 @@
     <link rel="stylesheet" href="assets/css/sidebar.css">
     <link rel="stylesheet" href="assets/css/starratings.css">
     <link rel="stylesheet" href="assets/css/styles.css">
+    <script src="assets/js/jquery.min.js"></script>
+
+    <script>
+        var check = function(){
+            if ((document.getElementById('pwd').value.length == 0) && (document.getElementById('cpwd').value.length == 0)) {
+                document.getElementById('match').innerHTML = '<br>';
+            } else if (document.getElementById('pwd').value == document.getElementById('cpwd').value) {
+                document.getElementById('match').style.color = 'green';
+                document.getElementById('match').innerHTML = 'Passwords Match';
+            } else {
+                document.getElementById('match').style.color = 'red';
+                document.getElementById('match').innerHTML = 'Passwords Do No Match';
+            }
+        }
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var x_timer;
+            $("#username").keyup(function (e){
+                clearTimeout(x_timer);
+                var user_name = $(this).val();
+                x_timer = setTimeout(function(){
+                    check_username_ajax(user_name);
+                }, 500);
+            });
+
+            function check_username_ajax(username){
+                $.post('check-username.php', {'username':username}, function(data) {
+                    $("#id-taken").html(data);
+                });
+            }
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var x_timer;
+            $("#email").keyup(function (e){
+                clearTimeout(x_timer);
+                var e_mail = $(this).val();
+                x_timer = setTimeout(function(){
+                    check_email_ajax(e_mail);
+                }, 500);
+            });
+
+            function check_email_ajax(email){
+                $.post('check-email.php', {'email':email}, function(data) {
+                    $("#em-taken").html(data);
+                });
+            }
+        });
+    </script>
+
+
+    <script>
+        $(document).ready(function() {
+            //using $.ajax() function
+            $(document).on('submit', '#newuserform', function()
+            {
+                var username=document.getElementById('username').value;
+                var email=document.getElementById('email').value;
+                var pwd=document.getElementById('pwd').value;
+                var cpwd=document.getElementById('cpwd').value;
+                var age=$('#age').text();
+                var country=$('#country').text();
+                var education=$('#edu').text();
+                var gender = $('input[name=gender]:checked').val();
+
+				
+				var message = username + email + pwd + age + education + country + gender;
+                alert(message);
+/*                if($.trim($('#username').val()) == ''){
+                    alert('Please enter an username.');
+                    $('#username').focus()
+                    return false;
+                }
+                if($.trim($('#email').val()) == ''){
+                    alert('Please enter an email.');
+                    $('#email').focus()
+                    return false;
+                }
+                if($('#pwd').val() == ''){
+                    alert('Please enter a password.');
+                    $('#pwd').focus()
+                    return false;
+                }
+                if($('#cpwd').val() == ''){
+                    alert('Please confirm your password.');
+                    $('#cpwd').focus()
+                    return false;
+                }*/
+                if(pwd != cpwd){
+                    alert('Passwords do not match.');
+                    return false;
+                }
+
+                if(document.getElementById("age").innerHTML == 'Select Age'){
+                    alert('Please select an age range.');
+                    $('#cpwd').focus()
+                    return false;
+                }
+                if(document.getElementById("country").innerHTML == 'Select Country'){
+                    alert('Please select a country.');
+                    return false;
+                }
+                if(document.getElementById("edu").innerHTML == 'Select Education Level'){
+                    alert('Please select an education option.');
+                    return false;
+                }
+                if(!$("input:radio[name='gender']").is(":checked")){
+                    alert('Please select a gender.');
+                    return false;
+                }
+                if(!$('input[type=checkbox]').prop('checked')){
+                    alert("Please check 'I Agree'.");
+                    return false;
+                }
+
+
+
+                $.ajax({
+                    type:'post',
+                    url:'registration.php',
+                    data: {
+                        un:username,
+                        em:email,
+                        pwd:pwd,
+                        cpwd:cpwd,
+                        age:age,
+                        country:country,
+                        education:education,
+                        gender:gender
+                    },
+				 success: function(result) { //we got the response
+					 alert('Successfully called');
+				 },
+				 error: function(jqxhr, status, exception) {
+					 alert('Exception:', exception);
+				 }
+                })
+                document.getElementById('message').innerHTML = un . em . pwd . cpwd . age . country . gender;
+                var message = un + em + pwd + age + education + country + gender;
+                alert(message);
+                return false;
+            });
+        });
+    </script>
+
+
+
 </head>
 
 <body>
-    <div class="modal fade" role="dialog" tabindex="-1" id="success-reg">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Registration</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
-                <div class="modal-body">
-                    <p>Your registration to <strong>Research On Funniness Lab </strong>is successful!</p>
-                </div>
-                <div class="modal-footer"></div>
+<h1 id="message"><br></h1>
+<div class="modal fade" role="dialog" tabindex="-1" id="success-reg">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Registration</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+            <div class="modal-body">
+                <p>Your registration to <strong>Research On Funniness Lab </strong>is successful!</p>
             </div>
+            <div class="modal-footer"></div>
         </div>
     </div>
-    <div class="modal fade" role="dialog" tabindex="-1" id="discmore">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Disclosure</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
-                <div class="modal-body">
-                    <p><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce at sapien eu neque auctor vulputate in non velit. Cras varius orci at nunc placerat condimentum. Aliquam consectetur nisl a tellus fermentum, egestas blandit magna
-                        molestie. Suspendisse varius, lacus sit amet iaculis dignissim, augue ante viverra elit, et scelerisque orci mi ac tellus. Donec sed ligula non lectus pharetra mollis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
-                        at sapien eu neque auctor vulputate in non velit. Cras varius orci at nunc placerat condimentum. Aliquam consectetur nisl a tellus fermentum, egestas blandit magna molestie. Suspendisse varius, lacus sit amet iaculis dignissim,
-                        augue ante viverra elit, et scelerisque orci mi ac tellus. Donec sed ligula non lectus pharetra mollis.&nbsp;<br><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce at sapien eu neque auctor vulputate in non velit.
-                        Cras varius orci at nunc placerat condimentum. Aliquam consectetur nisl a tellus fermentum, egestas blandit magna molestie. Suspendisse varius, lacus sit amet iaculis dignissim, augue ante viverra elit, et scelerisque orci mi ac
-                        tellus. Donec sed ligula non lectus pharetra mollis.&nbsp;<br><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce at sapien eu neque auctor vulputate in non velit. Cras varius orci at nunc placerat condimentum. Aliquam
-                        consectetur nisl a tellus fermentum, egestas blandit magna molestie. Suspendisse varius, lacus sit amet iaculis dignissim, augue ante viverra elit, et scelerisque orci mi ac tellus. Donec sed ligula non lectus pharetra mollis.&nbsp;<br><br><br><br>Lorem
-                        ipsum dolor sit amet, consectetur adipiscing elit. Fusce at sapien eu neque auctor vulputate in non velit. Cras varius orci at nunc placerat condimentum. Aliquam consectetur nisl a tellus fermentum, egestas blandit magna molestie.
-                        Suspendisse varius, lacus sit amet iaculis dignissim, augue ante viverra elit, et scelerisque orci mi ac tellus. Donec sed ligula non lectus pharetra mollis.&nbsp;<br><br><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Fusce at sapien eu neque auctor vulputate in non velit. Cras varius orci at nunc placerat condimentum. Aliquam consectetur nisl a tellus fermentum, egestas blandit magna molestie. Suspendisse varius, lacus sit amet iaculis dignissim,
-                        augue ante viverra elit, et scelerisque orci mi ac tellus. Donec sed ligula non lectus pharetra mollis.&nbsp;<br><br></p>
-                </div>
-                <div class="modal-footer"><button class="btn btn-light" type="button" data-dismiss="modal">Close</button></div>
+</div>
+
+<div class="modal fade" role="dialog" tabindex="-1" id="discmore">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Disclosure</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+            <div class="modal-body">
+                <p><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce at sapien eu neque auctor vulputate in non velit. Cras varius orci at nunc placerat condimentum. Aliquam consectetur nisl a tellus fermentum, egestas blandit magna
+                    molestie. Suspendisse varius, lacus sit amet iaculis dignissim, augue ante viverra elit, et scelerisque orci mi ac tellus. Donec sed ligula non lectus pharetra mollis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
+                    at sapien eu neque auctor vulputate in non velit. Cras varius orci at nunc placerat condimentum. Aliquam consectetur nisl a tellus fermentum, egestas blandit magna molestie. Suspendisse varius, lacus sit amet iaculis dignissim,
+                    augue ante viverra elit, et scelerisque orci mi ac tellus. Donec sed ligula non lectus pharetra mollis.&nbsp;<br><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce at sapien eu neque auctor vulputate in non velit.
+                    Cras varius orci at nunc placerat condimentum. Aliquam consectetur nisl a tellus fermentum, egestas blandit magna molestie. Suspendisse varius, lacus sit amet iaculis dignissim, augue ante viverra elit, et scelerisque orci mi ac
+                    tellus. Donec sed ligula non lectus pharetra mollis.&nbsp;<br><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce at sapien eu neque auctor vulputate in non velit.
+                    Cras varius orci at nunc placerat condimentum. Aliquam consectetur nisl a tellus fermentum, egestas blandit magna molestie. Suspendisse varius, lacus sit amet iaculis dignissim, augue ante viverra elit, et scelerisque orci mi ac
+                    tellus. Donec sed ligula non lectus pharetra mollis.&nbsp;<br><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce at sapien eu neque auctor vulputate in non velit.
+                    Cras varius orci at nunc placerat condimentum. Aliquam consectetur nisl a tellus fermentum, egestas blandit magna molestie. Suspendisse varius, lacus sit amet iaculis dignissim, augue ante viverra elit, et scelerisque orci mi ac
+                    tellus. Donec sed ligula non lectus pharetra mollis.</p>
             </div>
+            <div class="modal-footer"><button class="btn btn-light" type="button" data-dismiss="modal">Close</button></div>
         </div>
     </div>
-    <div class="contact-clean">
-        <form method="post">
-            <h2 class="text-center" style="margin-bottom:5px;">Register</h2>
-            <p class="text-center" style="margin:0px;margin-bottom:10px;">Participate in a global research development where all you have to do is say something funny and tell us how funny are the other jokes.</p>
-            <div class="form-group"><label>Username</label><input class="form-control" type="text" name="username" required="" tabindex="1"></div>
-            <div class="form-group"><label>Email</label><input class="form-control" type="text" name="email" required="" tabindex="2"></div>
-            <div class="form-group"><label>Password</label><input class="form-control" type="password" name="password" required="" tabindex="3"></div>
-            <div class="form-group"><label>Confirm Password</label><input class="form-control" type="password" name="confirm_password" required="" tabindex="4"></div>
-            <div class="form-row">
-                <div class="col"><label class="col-form-label">Age</label>
-                    <div class="dropdown"><button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button" id="age" style="margin-top:0px;" tabindex="5">Select Age</button>
-                        <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="#">First Item</a><a class="dropdown-item" role="presentation" href="#">Second Item</a><a class="dropdown-item" role="presentation" href="#">Third Item</a></div>
+</div>
+<div class="contact-clean">
+    <form method="post" name="newuserform" id="newuserform">
+        <h2 class="text-center" style="margin-bottom:5px;">Register</h2>
+        <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce at sapien eu neque auctor vulputate in non velit.&nbsp;<br><br><br></p>
+
+        <div class='form-group'><label>Username</label><input class='form-control' type='text' name='name' onkeyup='checkUN()' id='username' required></div>
+        <div id="id-taken"><br></div>
+        <div class='form-group'><label>Email</label><input class='form-control' type='email' name='name' onkeyup='checkEM()'id='email' required></div>
+        <div id="em-taken"><br></div>
+        <div class='form-group'><label>Password</label><input class='form-control' type='password' onkeyup='check()' id='pwd' required></div>
+        <div class='form-group'><label>Confirm Password</label><input class='form-control' type='password' onkeyup='check() 'id='cpwd' required>
+            <span id='match'><br></span>
+        </div>
+
+        <div class="form-row">
+            <div class="col"><label class="col-form-label">Age</label>
+                <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button" id="age" style="margin-top:0px;" id="age">Select Age</button>
+                    <div class="dropdown-menu" role="menu">
+                        <?php
+                            include ('getAgeGroups.php');
+                        ?>
+                    <!--<a class="dropdown-item" role="presentation" href="#">First Item</a><a class="dropdown-item" role="presentation" href="#">Second Item</a><a class="dropdown-item" role="presentation" href="#">Third Item</a>-->
                     </div>
                 </div>
-                <div class="col"><label class="col-form-label">Country</label><div class="dropdown"><button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button" id="age" style="margin-top:0px;" tabindex="6">Select Country</button>
-    <div role="menu" class="dropdown-menu dp-style"><a role="presentation" href="#" class="dropdown-item">First Item</a><a role="presentation" href="#" class="dropdown-item">Second Item</a><a role="presentation" href="#" class="dropdown-item">Third Item</a></div>
-</div></div>
-                <div class="col">
-                    <div class="form-group" style="margin-bottom:0px;margin-top:10px;"><label>Education Level</label>
-                        <div class="dropdown"><button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button" style="margin-top:0px;" tabindex="7">Select Education Level</button>
-                            <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="#">First Item</a><a class="dropdown-item" role="presentation" href="#">Second Item</a><a class="dropdown-item" role="presentation" href="#">Third Item</a></div>
+            </div>
+            <div class="col"><label class="col-form-label">Country</label>
+                <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button" style="margin-top:0px;" id="country">Select Country</button>
+                    <div class="dropdown-menu" role="menu">
+                        <?php
+                            include ('getCountries.php');
+                        ?>
+                        <!--<a class="dropdown-item" role="presentation" href="#">First Item</a><a class="dropdown-item" role="presentation" href="#">Second Item</a><a class="dropdown-item" role="presentation" href="#">Third Item</a>-->
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group" style="margin-bottom:0px;margin-top:10px;"><label>Education Level</label>
+                    <div class="dropdown">
+                        <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button" style="margin-top:0px;" id="edu">Select Education Level</button>
+                        <div class="dropdown-menu" role="menu">
+                            <?php
+                                include ('getEducation.php');
+                            ?>
+                            <!--<a class="dropdown-item" role="presentation" href="#">First Item</a><a class="dropdown-item" role="presentation" href="#">Second Item</a><a class="dropdown-item" role="presentation" href="#">Third Item</a>-->
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="form-group"><label>Gender</label>
-                <div class="form-row">
-                    <div class="col d-flex justify-content-center">
-                        <div class="form-check form-check-inline"><input class="form-check-input" type="radio" required="" id="gender1" name="gender" value="male" tabindex="8"><label class="form-check-label" for="gender1">Male</label></div>
-                    </div>
-                    <div class="col d-flex justify-content-center">
-                        <div class="form-check form-check-inline"><input class="form-check-input" type="radio" required="" id="gender2" name="gender" value="female" tabindex="9"><label class="form-check-label float-none" for="gender2">Female</label></div>
-                    </div>
-                    <div class="col d-flex justify-content-center" id="radiocenter">
-                        <div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="gender" value="other" required="" id="gender3" tabindex="10"><label class="form-check-label" for="gender3">Other</label></div>
+        </div>
+        <div class="form-group"><label>Gender</label>
+            <div class="form-row">
+                <div class="col d-flex justify-content-center">
+                    <div class="form-check form-check-inline"><input class="form-check-input" type="radio" id="gender1" name="gender" value="male"><label class="form-check-label" for="gender1">Male</label></div>
+                </div>
+                <div class="col d-flex justify-content-center">
+                    <div class="form-check form-check-inline"><input class="form-check-input" type="radio" id="gender2" name="gender" value="female"><label class="form-check-label float-none" for="gender2">Female</label></div>
+                </div>
+                <div class="col d-flex justify-content-center" id="radiocenter">
+                    <div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="gender" value="other" id="gender3"><label class="form-check-label" for="gender3">Other</label></div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group" style="margin-bottom:0px;"><label>Disclosure</label>
+            <div class="form-row">
+                <div class="col col-l">
+                    <p class="text-nowrap float-left" style="font-size:15px;margin-bottom:0px;">Please read the full disclosure&nbsp;<a href="#discmore" style="font-size:15px;" data-toggle="modal">here</a></p>
+                </div>
+                <div class="col d-flex justify-content-center">
+                    <div class="form-check form-check-inline d-block d-flex justify-content-end" style="font-size:20px;">
+                        <input class="form-check-input" type="checkbox" id="formCheck-2"><label class="form-check-label" for="formCheck-2" style="font-size:15px;">I Agree</label>
                     </div>
                 </div>
             </div>
-            <div class="form-group" style="margin-bottom:0px;"><label>Disclosure</label>
-                <div class="form-row">
-                    <div class="col col-l">
-                        <p class="text-nowrap float-left" style="font-size:15px;margin-bottom:0px;">Please read the full disclosure&nbsp;<a href="#discmore" style="font-size:15px;" data-toggle="modal">here</a></p>
-                    </div>
-                    <div class="col d-flex justify-content-center">
-                        <div class="form-check form-check-inline d-block d-flex justify-content-end" style="font-size:20px;"><input class="form-check-input" type="checkbox" required="" id="formCheck-2" tabindex="12"><label class="form-check-label" for="formCheck-2" style="font-size:15px;">I Agree</label></div>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group d-flex justify-content-center"><button class="btn btn-primary" type="submit" tabindex="13">register</button></div>
-        </form>
-    </div>
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="assets/js/a-popover.js"></script>
-    <script src="assets/js/add-rem-elements.js"></script>
-    <script src="assets/js/sidebar-menu.js"></script>
-    <script src="assets/js/u-popover.js"></script>
-    <script src="assets/js/bs-animation.js"></script>
-    <script src="assets/js/selectdropdown.js"></script>
+        </div>
+        <div class="form-group d-flex justify-content-center"><button class="btn btn-primary" type="submit" id="submit">register</button></div>
+    </form>
+</div>
+
+
+
+<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="assets/js/a-popover.js"></script>
+<script src="assets/js/add-rem-elements.js"></script>
+<script src="assets/js/dropdown.js"></script>
+<script src="assets/js/sidebar-menu.js"></script>
+<script src="assets/js/u-popover.js"></script>
+<script src="assets/js/selectdropdown.js"></script>
 </body>
 
 </html>
