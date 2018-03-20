@@ -11,8 +11,6 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bangers">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bowlby+One+SC">
     <link rel="stylesheet" href="assets/css/footer.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-    <link rel="stylesheet" href="assets/css/loader.css">
     <link rel="stylesheet" href="assets/css/loginform.css">
     <link rel="stylesheet" href="assets/css/popover.css">
     <link rel="stylesheet" href="assets/css/previewratings.css">
@@ -21,14 +19,46 @@
     <link rel="stylesheet" href="assets/css/sidebar.css">
     <link rel="stylesheet" href="assets/css/starratings.css">
     <link rel="stylesheet" href="assets/css/styles.css">
+    <script src="assets/js/jquery.min.js"></script>
+
+    <!--script to call phpmailer and send admin contact message-->
+    <script>
+        $(document).ready(function() {
+            //using $.ajax() function
+            $(document).on('submit', '#contactForm', function () {
+                //get variables from contact form
+                var email = document.getElementById('email').value;
+                var message = document.getElementById('message').value;
+
+                $.ajax({
+                    url: 'contact-us.php',
+                    type: 'post',
+                    data: {
+                        em: email,
+                        message: message
+                    },
+                    success: function(response) {
+                        alert(response);
+                    },
+                    error: function(response){
+                        alert(response);
+                    }
+                });
+                return false;
+            });
+        });
+    </script>
 </head>
 
 <body>
+    <?php
+        include ('session.php');
+    ?>
     <div id="wrapper">
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
-                <li class="sidebar-brand"> <a href="u-dashboard.html" class="s-logo"><i class="fa fa-flask"></i>ROFL</a></li>
-                <li class="sidebar-user"> <button type="button" class="btn btn-dark" data-trigger="focus" data-toggle="popover">Username</button></li>
+                <li class="sidebar-brand"> <a class="s-logo"><i class="fa fa-flask"></i>ROFL</a></li>
+                <li class="sidebar-user"> <button type="button" class="btn btn-dark" data-toggle="popover">Username</button></li>
                 <li> <a href="u-dashboard.html"><i class="fa fa-dashboard"></i>&nbsp Dashboard</a></li>
                 <li> <a href="u-my-jokes.html"><i class="fa fa-book"></i>&nbsp My Jokes</a></li>
                 <li> <a href="u-my-rated-jokes.html"><i class="fa fa-star"></i>&nbsp My Rated Jokes</a></li>
@@ -49,16 +79,16 @@
                 <div class="row content-area">
                     <div class="col">
                         <div>
-                            <form>
+                            <form method="post" name="contactForm" id="contactForm">
                                 <div class="form-group">
-                                    <h6>Email:</h6><input class="form-control" type="text" name="contact_email" required="" autofocus="">
+                                    <h6>Email:</h6><input class="form-control" type="email" id="email" required="">
                                     <hr>
                                 </div>
                                 <div class="form-group">
-                                    <h6>Message:</h6><textarea class="form-control" rows="5" spellcheck="true" name="contact_message" required="" placeholder="Write message here..."></textarea>
+                                    <h6>Message:</h6><textarea class="form-control" rows="5" id="message" required="" placeholder="Write message here..."></textarea>
                                     <hr>
                                 </div>
-                                <div class="form-group"><button class="btn btn-primary" type="submit" name="submit">Send Message &nbsp<i class="fa fa-chevron-circle-right"></i></button></div>
+                                <div class="form-group"><button class="btn btn-primary" type="submit" id="submit">Send Message &nbsp<i class="fa fa-chevron-circle-right"></i></button></div>
                             </form>
                         </div>
                     </div>
@@ -70,9 +100,9 @@
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/a-popover.js"></script>
     <script src="assets/js/add-rem-elements.js"></script>
+    <script src="assets/js/dropdown.js"></script>
     <script src="assets/js/sidebar-menu.js"></script>
     <script src="assets/js/u-popover.js"></script>
-    <script src="assets/js/bs-animation.js"></script>
     <script src="assets/js/selectdropdown.js"></script>
 </body>
 
