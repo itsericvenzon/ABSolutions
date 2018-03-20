@@ -28,10 +28,6 @@
                 var username = document.getElementById('username').value;
                 var pwd = document.getElementById('password').value;
 
-                var mess = username + pwd;
-                alert(mess);
-                $("#error").html(mess);
-
                 $.ajax({
                     url:'u-login.php',
                     type:'post',
@@ -53,12 +49,17 @@
                 return false;
             });
         });
-
     </script>
+    <script>
+    //$("#error").html(mess);
+    </script>
+
 </head>
 
 <body>
-    <h1 id="error">Hello World</h1>
+    <!--error checking line-->
+    <h1 id="error"></h1>
+
     <div class="login-clean">
         <!--enctype='multipart/form-data'-->
         <form method='post' name='loginform' id='loginform'>

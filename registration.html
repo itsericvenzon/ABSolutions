@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="assets/css/styles.css">
     <script src="assets/js/jquery.min.js"></script>
 
+    <!--Compares password with confirm password in real time-->
     <script>
         var check = function(){
             if ((document.getElementById('pwd').value.length == 0) && (document.getElementById('cpwd').value.length == 0)) {
@@ -35,6 +36,8 @@
             }
         }
     </script>
+
+    <!--Real time checks if username is available-->
     <script type="text/javascript">
         $(document).ready(function() {
             var x_timer;
@@ -54,6 +57,7 @@
         });
     </script>
 
+    <!--Real time checks if email is available-->
     <script type="text/javascript">
         $(document).ready(function() {
             var x_timer;
@@ -74,10 +78,12 @@
     </script>
 
 
+    <!--check form for correct inputs using ajax and send confirmation email-->
     <script>
         $(document).ready(function() {
             //using $.ajax() function
                 $(document).on('submit', '#newuserform', function () {
+                    //get variables from registration form
                     var username = document.getElementById('username').value;
                     var email = document.getElementById('email').value;
                     var pwd = document.getElementById('pwd').value;
@@ -86,8 +92,7 @@
                     var country = $('#country').text();
                     var education = $('#edu').text();
                     var gender = $('input[name=gender]:checked').val();
-                    //var message = username + email + pwd + age + education + country + gender;
-                    //alert(message);
+
                     if (pwd != cpwd) {
                         alert('Passwords do not match.');
                         return false;
@@ -95,7 +100,6 @@
 
                     if (age == 'Select Age') {
                         alert('Please select an age range.');
-                        $('#cpwd').focus();
                         return false;
                     }
                     if (country == 'Select Country') {
@@ -141,12 +145,9 @@
                             education: education,
                             gender: gender
                         },
-                        success: function() {
-                            alert('Your registration to Research On Funniness Lab is successful!');
-                            window.location = "u-login.html";
-                        },
-                        error: function(message) {
+                        success: function(message) {
                             alert(message);
+                            window.location = "u-login.html";
                         }
                     });
                     return false;
