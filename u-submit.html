@@ -7,7 +7,12 @@
     <title>The Web Survey Tool</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alfa+Slab+One">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bangers">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bowlby+One+SC">
     <link rel="stylesheet" href="assets/css/footer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="assets/css/loader.css">
     <link rel="stylesheet" href="assets/css/loginform.css">
     <link rel="stylesheet" href="assets/css/popover.css">
     <link rel="stylesheet" href="assets/css/previewratings.css">
@@ -16,69 +21,15 @@
     <link rel="stylesheet" href="assets/css/sidebar.css">
     <link rel="stylesheet" href="assets/css/starratings.css">
     <link rel="stylesheet" href="assets/css/styles.css">
-	
-	    <script>
-        $(document).ready(function() {
-            //using $.ajax() function
-            $(document).on('submit', '#newuserform', function()
-            {
-                var description=document.getElementById('description').value;
-                var jtype=$('joke-type').text();
-                var jgenre=$('joke-genre').text();
-                var eighteen = $("#formCheck-1").prop('checked');
-				
-
-                if(document.getElementById("").innerHTML == 'Select Country'){
-                    alert('Please select a country.');
-                    return false;
-                }
-                if(document.getElementById("edu").innerHTML == 'Select Education Level'){
-                    alert('Please select an education option.');
-                    return false;
-                }
-                if(!$("input:radio[name='gender']").is(":checked")){
-                    alert('Please select a gender.');
-                    return false;
-                }
-                if(!$('input[type=checkbox]').prop('checked')){
-                    alert("Please check 'I Agree'.");
-                    return false;
-                }
-
-
-
-                $.ajax({
-                    type:'post',
-                    url:'registration.php',
-                    data: {
-                        un:username,
-                        em:email,
-                        pwd:pwd,
-                        cpwd:cpwd,
-                        age:age,
-                        country:country,
-                        education:education,
-                        gender:gender
-                    },
-                    success: function() {
-                        var message = username + email + pwd + age + education + country + gender;
-                        alert(message);
-                    }
-                })
-                document.getElementById('message').innerHTML = username . email . pwd . cpwd . age . country . gender;
-                return false;
-            });
-        });
-    </script>
 </head>
 
 <body>
     <div id="wrapper">
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
-                <li class="sidebar-brand"> <a href="#"><i class="fa fa-flask"></i>ROFL</a></li>
+                <li class="sidebar-brand"> <a href="u-dashboard.html" class="s-logo"><i class="fa fa-flask"></i>ROFL</a></li>
                 <li class="sidebar-user"> <button type="button" class="btn btn-dark" data-trigger="focus" data-toggle="popover">Username</button></li>
-                <li> <a href="#"><i class="fa fa-dashboard"></i>&nbsp Dashboard</a></li>
+                <li> <a href="u-dashboard.html"><i class="fa fa-dashboard"></i>&nbsp Dashboard</a></li>
                 <li> <a href="u-my-jokes.html"><i class="fa fa-book"></i>&nbsp My Jokes</a></li>
                 <li> <a href="u-my-rated-jokes.html"><i class="fa fa-star"></i>&nbsp My Rated Jokes</a></li>
                 <li> <a href="u-contact-us.html"><i class="fa fa-envelope"></i>&nbsp Contact Us</a></li>
@@ -107,7 +58,7 @@
                 <form>
                     <div class="form-row">
                         <div class="col">
-                            <div><textarea class="form-control" rows="5" placeholder="Say something funny.." id='description'></textarea></div>
+                            <div><textarea class="form-control" rows="5" required="" placeholder="Say something funny.."></textarea></div>
                         </div>
                     </div>
                     <div class="form-row">
@@ -115,25 +66,14 @@
                             <div>
                                 <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-1"><label class="form-check-label" for="formCheck-1">+18</label></div>
                                 <div class="dropdown"><button class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button" id="joke-type">Joke Type</button>
-                                    <div class="dropdown-menu" role="menu">
-										<?php
-											include ('getJokeTypes.php');
-										?>
-                                    <!--<a class="dropdown-item" role="presentation" href="#">First Item</a><a class="dropdown-item" role="presentation" href="#">Second Item</a><a class="dropdown-item" role="presentation" href="#">Third Item</a>-->
-									</div>
+                                    <div class="dropdown-menu dp-style" role="menu"><a class="dropdown-item" role="presentation" href="#">First Item</a><a class="dropdown-item" role="presentation" href="#">Second Item</a><a class="dropdown-item" role="presentation" href="#">Third Item</a></div>
                                 </div>
                             </div><button class="btn btn-primary btn-lg" type="submit" id="submit-joke" data-toggle="modal" href="#accepted">Submit Joke</button></div>
                         <div class="col">
-                            <div><button class="btn btn-primary btn-sm form-check" type="button" data-duplicate-add="genre">Add Genre</button><div data-duplicate="genre">
-
-    <div class="dropdown"><button class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button" id="joke-Genre">Joke Genre</button>
+                            <div><button class="btn btn-primary btn-sm form-check" type="button" data-duplicate-add="genre">Add Genre</button><div data-duplicate="genre">    
+    <div class="dropdown"><button class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button" id="joke-type">Joke Genre</button>
             
-		<div role="menu" class="dropdown-menu">
-			<?php
-				include ('getJokeGenres.php');
-			?>
-			<!--<a role="presentation" href="#" class="dropdown-item">First Item</a><a role="presentation" href="#" class="dropdown-item">Second Item</a><a role="presentation" href="#" class="dropdown-item">Third Item</a>-->
-		</div>
+    <div role="menu" class="dropdown-menu dp-style"><a role="presentation" href="#" class="dropdown-item">First Item</a><a role="presentation" href="#" class="dropdown-item">Second Item</a><a role="presentation" href="#" class="dropdown-item">Third Item</a></div>
         
         <button class="btn btn-sm btn-danger rem-genre" data-duplicate-remove="genre"><i class="fa fa-minus-circle"></i></button>
     </div> 
@@ -162,6 +102,8 @@
     <script src="assets/js/add-rem-elements.js"></script>
     <script src="assets/js/sidebar-menu.js"></script>
     <script src="assets/js/u-popover.js"></script>
+    <script src="assets/js/bs-animation.js"></script>
+    <script src="assets/js/selectdropdown.js"></script>
 </body>
 
 </html>

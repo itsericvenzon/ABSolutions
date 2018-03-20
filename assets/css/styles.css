@@ -426,24 +426,28 @@ card .card-height-indicator {
   width:40%;
 }
 
-.dp-width {
-  width:100%;
-}
-
 .m-logo {
   margin-bottom:-30px;
   font-size:131px;
   font-family:bangers;
 }
 
-.dropdown-menu {
-  max-height:200px;
+.dp-style {
+  max-height:400px;
   overflow:scroll;
+  overflow-x:hidden;
 }
 
 .s-logo {
   font-size:50px;
   font-family:bangers;
   margin:10px;
+}
+
+.center {
+  position:fixed;
+  top:50%;
+  left:50%;
+  transform:translate(-50%, -50%);
 }
 

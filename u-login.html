@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bangers">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bowlby+One+SC">
     <link rel="stylesheet" href="assets/css/footer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="assets/css/loader.css">
     <link rel="stylesheet" href="assets/css/loginform.css">
     <link rel="stylesheet" href="assets/css/popover.css">
     <link rel="stylesheet" href="assets/css/previewratings.css">
@@ -19,62 +21,21 @@
     <link rel="stylesheet" href="assets/css/sidebar.css">
     <link rel="stylesheet" href="assets/css/starratings.css">
     <link rel="stylesheet" href="assets/css/styles.css">
-    <script src="assets/js/jquery.min.js"></script>
-    <script src='http://code.jquery.com/jquery-1.9.1.js'></script>
-    <script>
-        $(document).ready(function() {
-            //using $.ajax() function
-            $('#log').click(function () {
-                var username = document.getElementById('username').value;
-                var pwd = document.getElementById('password').value;
-
-                $.ajax({
-                    url:'u-login.php',
-                    type:'post',
-                    data: {
-                        un:username,
-                        pwd:pwd
-                    },
-                    success: function(message) {
-                        alert(message);
-                        //window.location = "u-dashboard.html";
-                        if (message == 'Successful Login'){
-                            window.location = "u-dashboard.html";
-                        }
-                    },
-                    error: function(message) {
-                        alert(message);
-                    }
-                });
-                return false;
-            });
-        });
-    </script>
-    <script>
-    //$("#error").html(mess);
-    </script>
-
 </head>
 
 <body>
-    <!--error checking line-->
-    <h1 id="error"></h1>
-
     <div class="login-clean">
-        <!--enctype='multipart/form-data'-->
-        <form method='post' name='loginform' id='loginform'>
+        <form method="post">
             <h2 class="sr-only">Login Form</h2>
-            <div class="illustration"><i class="fa fa-flask"></i>
+            <div class="illustration"><i class="fa fa-flask shake animated"></i>
                 <h1 class="m-logo">ROFL</h1>
                 <h6>Research On Funniness Lab</h6>
             </div>
-            <div class="form-group"><input class="form-control" type="text" name="username" placeholder="Username" id="username" required></div>
-            <div class="form-group"><input class="form-control" type="password" name="password" placeholder="Password" id="password" required></div>
-            <div id="invalid"><br></div>
-            <div class="form-group"><button class="btn btn-primary btn-block" type="submit" id="log">Log In</button></div>
-            <a href="#fusername" class="forgot" data-toggle="modal">Forgot Username</a>
-            <a href="#fpasswd" class="forgot" data-toggle="modal">Forgot Password</a>
-            <a href="Registration.html" class="forgot">Register</a>
+            <div class="form-group"><input class="form-control" type="email" name="email" required="" placeholder="Username" tabindex="1"></div>
+            <div class="form-group"><input class="form-control" type="password" name="password" required="" placeholder="Password" tabindex="2"></div>
+            <div class="form-group"><button class="btn btn-primary btn-block" type="submit" tabindex="3">Log In</button></div><a href="#fusername" class="forgot" data-toggle="modal" tabindex="4">Forgot Username</a><a href="#fpasswd" class="forgot" data-toggle="modal" tabindex="5">Forgot Password</a>
+            <a
+                href="Registration.html" class="forgot" tabindex="6">Register</a>
         </form>
     </div>
     <div class="modal fade" role="dialog" tabindex="-1">
@@ -120,14 +81,13 @@
             </div>
         </div>
     </div>
-
-
+    <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/a-popover.js"></script>
     <script src="assets/js/add-rem-elements.js"></script>
-    <script src="assets/js/dropdown.js"></script>
     <script src="assets/js/sidebar-menu.js"></script>
     <script src="assets/js/u-popover.js"></script>
+    <script src="assets/js/bs-animation.js"></script>
     <script src="assets/js/selectdropdown.js"></script>
 </body>
 

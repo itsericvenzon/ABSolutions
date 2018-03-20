@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bangers">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bowlby+One+SC">
     <link rel="stylesheet" href="assets/css/footer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="assets/css/loader.css">
     <link rel="stylesheet" href="assets/css/loginform.css">
     <link rel="stylesheet" href="assets/css/popover.css">
     <link rel="stylesheet" href="assets/css/previewratings.css">
@@ -25,7 +27,7 @@
     <div>
         <div class="container" style="padding-top:80px;margin-top:80px;">
             <div class="row">
-                <div class="col-md-12"><i class="fa fa-flask d-flex flex-row justify-content-center align-content-center" style="font-size:150px;"></i>
+                <div class="col-md-12"><i class="fa fa-flask d-flex flex-row justify-content-center align-content-center shake animated" style="font-size:150px;"></i>
                     <h1 class="text-center m-logo">ROFL</h1>
                     <h6 class="text-center">Research On Funniness Lab</h6>
                 </div>
@@ -36,7 +38,7 @@
                         Suspendisse varius, lacus sit amet iaculis dignissim, augue ante viverra elit, et scelerisque orci mi ac tellus. Donec sed ligula non lectus pharetra mollis.&nbsp;<br><a class="float-right" href="#readmore" data-toggle="modal">Read More...</a><br></p>
                 </div>
                 <div class="col">
-                    <div class="btn-group btn-group-lg d-inline-block float-none d-flex flex-row justify-content-center" role="group" style="margin-top:20px;"><a class="btn btn-primary" role="button" href="Registration.html" style="margin-right:10px;">New User</a><a class="btn btn-primary" role="button" href="u-login.html" style="margin-left:5px;">Recurring User</a></div>
+                    <div class="btn-group btn-group-lg d-inline-block float-none d-flex flex-row justify-content-center" role="group" style="margin-top:20px;"><a class="btn btn-primary" role="button" href="Registration.html" data-bs-hover-animate="pulse" style="margin-right:10px;">New User</a><a class="btn btn-primary" role="button" href="u-login.html" data-bs-hover-animate="pulse" style="margin-left:5px;">Recurring User</a></div>
                 </div>
             </div>
         </div>
@@ -57,8 +59,8 @@
                     <h4 class="modal-title">Contact Us</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
                 <div class="modal-body" style="padding:0px;">
                     <form action="javascript:void();" method="get" id="contactForm" style="padding-right:16px;padding-left:16px;">
-                        <div class="form-group has-feedback"><label for="from_email">Email</label><input class="form-control" type="email" name="from_email" required="" autofocus="" id="from_email" style="height:42px;"></div>
-                        <div class="form-group has-feedback"><label for="from_phone">Subject</label><input class="form-control" type="email" name="subject_line" required="" autofocus="" id="from_email" style="height:42px;"></div>
+                        <div class="form-group has-feedback"><label for="from_email">Name</label><input class="form-control" type="text" name="contact_name" required="" autofocus=""></div>
+                        <div class="form-group has-feedback"><label for="from_phone">Email</label><input class="form-control" type="email" name="contact_email" required="" autofocus="" id="from_email" style="height:42px;"></div>
                         <div class="form-group"><label for="comments">Message</label><textarea class="form-control" rows="5" name="message" required="" placeholder="Write message here..." autofocus="" id="message"></textarea></div>
                         <div class="form-group"><button class="btn btn-primary btn-block" type="submit">Send <i class="fa fa-chevron-circle-right"></i></button></div>
                     </form>
@@ -99,9 +101,9 @@
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/a-popover.js"></script>
     <script src="assets/js/add-rem-elements.js"></script>
-    <script src="assets/js/dropdown.js"></script>
     <script src="assets/js/sidebar-menu.js"></script>
     <script src="assets/js/u-popover.js"></script>
+    <script src="assets/js/bs-animation.js"></script>
     <script src="assets/js/selectdropdown.js"></script>
 </body>
 

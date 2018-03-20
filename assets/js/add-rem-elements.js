@@ -10,7 +10,7 @@ $.duplicate = function(){
       var options = {};
       var min = +$(this).data('duplicate-min');
       options.minimum = isNaN(min) ? 1 : min;
-      options.maximum = +$(this).data('duplicate-max') || Infinity;
+      options.maximum = +$(this).data('duplicate-max') || 3;
       options.parent = $(this).parent();
 
       settings[name] = options;
