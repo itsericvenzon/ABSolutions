@@ -21,31 +21,21 @@
     <link rel="stylesheet" href="assets/css/sidebar.css">
     <link rel="stylesheet" href="assets/css/starratings.css">
     <link rel="stylesheet" href="assets/css/styles.css">
-	
-	<script src="assets/js/jquery.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="assets/js/a-popover.js"></script>
-    <script src="assets/js/add-rem-elements.js"></script>
-    <script src="assets/js/sidebar-menu.js"></script>
-    <script src="assets/js/u-popover.js"></script>
-    <script src="assets/js/bs-animation.js"></script>
-    <script src="assets/js/selectdropdown.js"></script>
+
 </head>
 
 <body>
 	<?php
 		session_start();
-		echo '<pre>';
-		print_r($_SESSION);
-		echo '</pre>'; 
+//		echo '<pre>';
+//		print_r($_SESSION);
+//		echo '</pre>'; 
 	?>
     <div id="wrapper">
         <div id="sidebar-wrapper">
 		
             <ul class="sidebar-nav">
-				
-				<li><a role="button" class="btn btn-warning btn-sm" href="u-logout.php">Logout</a></li>
-                
+				               
 				<li class="sidebar-brand"> <a class="s-logo" href="u-dashboard.html"><i class="fa fa-flask"></i>ROFL</a></li>
                 <li class="sidebar-user"> <button type="button" class="btn btn-dark" data-toggle="popover">Username</button></li>
                 <li> <a href="u-dashboard.html"><i class="fa fa-dashboard"></i>&nbsp Dashboard</a></li>
@@ -92,20 +82,20 @@
                             <h6 id="datelabel">&lt;user&gt;</h6>
                             <h6 id="dateposted">Posted by:&nbsp;</h6>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin accumsan tellus eget ipsum ullamcorper, non condimentum massa ultricies. Nullam dignissim placerat nulla.<br></p><span class="fa fa-star checked"></span>
-<span class="fa fa-star"></span>
-<span class="fa fa-star"></span>
-<span class="fa fa-star"></span>
-<span class="fa fa-star"></span>
+								<span class="fa fa-star"></span>
+								<span class="fa fa-star"></span>
+								<span class="fa fa-star"></span>
+								<span class="fa fa-star"></span>
                             <hr>
                         </div>
                         <div>
                             <h6 id="datelabel">&lt;user&gt;</h6>
                             <h6 id="dateposted">Posted by:&nbsp;</h6>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin accumsan tellus eget ipsum ullamcorper, non condimentum massa ultricies. Nullam dignissim placerat nulla.<br></p><span class="fa fa-star checked"></span>
-<span class="fa fa-star checked"></span>
-<span class="fa fa-star checked"></span>
-<span class="fa fa-star checked"></span>
-<span class="fa fa-star checked"></span>
+								<span class="fa fa-star checked"></span>
+								<span class="fa fa-star checked"></span>
+								<span class="fa fa-star checked"></span>
+								<span class="fa fa-star checked"></span>
                             <hr>
                         </div>
                     </div>
@@ -115,5 +105,14 @@
     </div>
 
 </body>
-
+	
+	<script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/u-popover.js"></script>
+    <script src="assets/js/a-popover.js"></script>
+    <script src="assets/js/add-rem-elements.js"></script>
+    <script src="assets/js/sidebar-menu.js"></script>
+    <script src="assets/js/bs-animation.js"></script>
+    <script src="assets/js/selectdropdown.js"></script>
+	
 </html>
